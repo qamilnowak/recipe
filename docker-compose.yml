@@ -9,7 +9,7 @@ services:
     volumes:
       - ./app:/app
     command: >
-      sh -c "python manage.py run server 0.0.0.0:8000"
+      sh -c "python manage.py runserver 0.0.0.0:8000"
     environment:
       - DB_HOST=db
       - DB_NAME=app
@@ -19,6 +19,7 @@ services:
       - db
 
   db:
+    build: .
     image: postgres:10-alpine
     environment:
       - POSTGRES_DB=app
